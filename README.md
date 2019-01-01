@@ -6,7 +6,7 @@
 
 ![Contribution Graph Pixel Wave with epic Gradient](https://github.com/FreddyMSchubert/contribution-pixel-painter/blob/main/readme-assets/examples/pixel-snake-gradiented.png)
 
-⬇️ More cool examples ⬇️
+⬇️  More cool examples ⬇️
 
 ## What is this?
 
