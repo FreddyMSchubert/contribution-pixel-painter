@@ -59,6 +59,9 @@ selected_dates = create_calendar(year_input)
 print("Selected Dates:", selected_dates)
 
 # Setup
+if not selected_dates:
+	print("No dates selected. Exiting.")
+	exit()
 filename = 'commit_log.md'
 with open(filename, 'w') as file:
 	file.write("# Git Contribution Art created using https://github.com/FreddyMSchubert/contribution-pixel-painter !\n")
@@ -82,4 +85,4 @@ os.remove(filename)
 subprocess.run(['git', 'add', filename], check=True)
 subprocess.run(['git', 'commit', '-m', 'Clean up after contribution art'], check=True)
 
-print("Done! 🎨🖌️🖼️ Contribution art has been created.")
+print("Done! 🎨🖌️🖼️ Commits for Contribution art have been created.")
