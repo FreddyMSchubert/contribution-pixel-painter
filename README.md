@@ -1,5 +1,7 @@
 # Contribution Pixel Painter 🎨🖌️🖼️
 
+> Let's abuse the GitHub contribution graph!
+
 ## Usage
 
 1. Copy the `contribution-pixel-painter.py` into the repo you want the commits to be attributed to.

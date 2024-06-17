@@ -1,5 +1,7 @@
 import tkinter as tk
 from datetime import datetime, timedelta
+import subprocess
+import os
 
 def toggle_color(f, date, selected_dates):
 	if f['bg'] == 'gray':
@@ -55,3 +57,29 @@ def create_calendar(year):
 year_input = int(input("Kindly enter the year in which you wish to paint some custom contributions: "))
 selected_dates = create_calendar(year_input)
 print("Selected Dates:", selected_dates)
+
+# Setup
+filename = 'commit_log.md'
+with open(filename, 'w') as file:
+	file.write("# Git Contribution Art created using https://github.com/FreddyMSchubert/contribution-pixel-painter !\n")
+
+def create_commit(date):
+	with open(filename, 'a') as file:
+		file.write(f"- Commit on {date}\n")
+	# Stage the file
+	subprocess.run(['git', 'add', filename], check=True)
+	# Commit with the specified date
+	env = os.environ.copy()
+	env['GIT_COMMITTER_DATE'] = date
+	env['GIT_AUTHOR_DATE'] = date
+	subprocess.run(['git', 'commit', '-m', f'Contribution Art on {date}'], env=env, check=True)
+
+for date in selected_dates:
+	create_commit(date)
+
+# Cleanup
+os.remove(filename)
+subprocess.run(['git', 'add', filename], check=True)
+subprocess.run(['git', 'commit', '-m', 'Clean up after contribution art'], check=True)
+
+print("Done! 🎨🖌️🖼️ Contribution art has been created.")
