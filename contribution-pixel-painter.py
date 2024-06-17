@@ -12,27 +12,40 @@ def toggle_color(f, date, selected_dates):
 			selected_dates.remove(date)
 
 def create_calendar(year):
-	# Determine the start and end days of the year
+	# Calculate the start day of the year and adjust to the first Sunday
 	start_date = datetime(year, 1, 1)
 	start_day = start_date.weekday()  # Monday = 0; Sunday = 6
-	current_date = start_date - timedelta(days=start_day) # start from first Sunday
+	if start_day != 6:
+		start_date -= timedelta(days=start_day + 1)  # Adjust to the previous Sunday
 
+	# Calculate the end date for the calendar grid
+	end_date = datetime(year, 12, 31)
+	end_day = end_date.weekday()
+	if end_day != 6:
+		end_date += timedelta(days=(5 - end_day))  # Extend to the next Saturday
+
+	current_date = start_date
 	window = tk.Tk()
 	window.title("Contribution Pixel Painter 🎨🖌️🖼️")
+	window.configure(bg='black')
 
 	selected_dates = []
 
-	for week in range(53):
-		for day in range(7):
-			frame = tk.Frame(window, borderwidth=1, relief="solid", width=20, height=20)
-			frame.grid(row=day, column=week, sticky="nsew")
-			frame.propagate(False)  # Dont resize
-			frame.config(bg='gray')
+	while current_date <= end_date:
+		week = (current_date - start_date).days // 7
+		day = current_date.weekday()
+		frame = tk.Frame(window, borderwidth=1, relief="solid", width=20, height=20)
+		frame.grid(row=(day + 1) % 7, column=week, sticky="nsew")
+		frame.propagate(False)  # Don't resize
 
-			frame_date = current_date.strftime('%Y-%m-%d') if current_date.year == year else ""
+		frame_date = current_date.strftime('%Y-%m-%d') if current_date.year == year else ""
+		color = 'black' if current_date.year != year else 'gray'
+		frame.config(bg=color)
+
+		if current_date.year == year:
 			frame.bind("<Button-1>", lambda event, f=frame, d=frame_date: toggle_color(f, d, selected_dates))
 
-			current_date += timedelta(days=1)
+		current_date += timedelta(days=1)
 
 	window.mainloop()
 
