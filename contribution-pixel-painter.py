@@ -1,35 +1,44 @@
 import tkinter as tk
 from datetime import datetime, timedelta
 
+def toggle_color(f, date, selected_dates):
+	if f['bg'] == 'gray':
+		f.config(bg='green')
+		if date:
+			selected_dates.append(date)
+	else:
+		f.config(bg='gray')
+		if date in selected_dates:
+			selected_dates.remove(date)
+
 def create_calendar(year):
 	# Determine the start and end days of the year
 	start_date = datetime(year, 1, 1)
-	end_date = datetime(year, 12, 31)
-	start_day = start_date.weekday()  # Monday is 0 and Sunday is 6
+	start_day = start_date.weekday()  # Monday = 0; Sunday = 6
+	current_date = start_date - timedelta(days=start_day) # start from first Sunday
 
-	# Create main window
 	window = tk.Tk()
-	window.title("GitHub Style Contribution Calendar")
+	window.title("Contribution Pixel Painter 🎨🖌️🖼️")
 
-	# Create frames for each month
-	dates = []
-	current_date = start_date - timedelta(days=start_day)  # Adjust to start from the first Sunday
+	selected_dates = []
 
-	# Loop over weeks (up to 53 to cover all days)
 	for week in range(53):
 		for day in range(7):
-			frame = tk.Frame(window, borderwidth=1, relief="solid")
-			frame.grid(row=week, column=day, sticky="nsew")
-			date_label = tk.Label(frame, text=current_date.strftime('%Y-%m-%d') if current_date.year == year else "")
-			date_label.pack(padx=10, pady=10)
-			if current_date.year == year:
-				dates.append(current_date.strftime('%Y-%m-%d'))
+			frame = tk.Frame(window, borderwidth=1, relief="solid", width=20, height=20)
+			frame.grid(row=day, column=week, sticky="nsew")
+			frame.propagate(False)  # Dont resize
+			frame.config(bg='gray')
+
+			frame_date = current_date.strftime('%Y-%m-%d') if current_date.year == year else ""
+			frame.bind("<Button-1>", lambda event, f=frame, d=frame_date: toggle_color(f, d, selected_dates))
+
 			current_date += timedelta(days=1)
 
 	window.mainloop()
-	return dates
+
+	return selected_dates
 
 # Ask for the year from the user
 year_input = int(input("Kindly enter the year in which you wish to paint some custom contributions: "))
-dates_array = create_calendar(year_input)
-print("Dates Array:", dates_array)
+selected_dates = create_calendar(year_input)
+print("Selected Dates:", selected_dates)
