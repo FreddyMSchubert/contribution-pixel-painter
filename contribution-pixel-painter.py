@@ -70,8 +70,8 @@ def create_commit(date):
 	subprocess.run(['git', 'add', filename], check=True)
 	# Commit with the specified date
 	env = os.environ.copy()
-	env['GIT_COMMITTER_DATE'] = date
-	env['GIT_AUTHOR_DATE'] = date
+	env['GIT_COMMITTER_DATE'] = date + " 10:00:00"
+	env['GIT_AUTHOR_DATE'] = date + " 10:00:00"
 	subprocess.run(['git', 'commit', '-m', f'Contribution Art on {date}'], env=env, check=True)
 
 for date in selected_dates:
