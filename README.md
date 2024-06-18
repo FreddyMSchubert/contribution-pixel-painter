@@ -81,5 +81,5 @@ Let's get started...
 ![Contribution Graph Pixel DNA](https://github.com/FreddyMSchubert/contribution-pixel-painter/blob/main/readme-assets/examples/dna.png)
 > Inspired by [obsessive compulsive Disorder](https://medium.com/@olyaB/making-your-github-green-again-dab6f414b04b)
 
-![Contribution Graph Pixel Among us Kinda Sus](https://github.com/FreddyMSchubert/contribution-pixel-painter/blob/main/readme-assets/examples/amongus.png)
+![Contribution Graph Pixel Among us Kinda Sus](https://github.com/FreddyMSchubert/contribution-pixel-painter/blob/main/readme-assets/examples/amogus.png)
 > Inspired by [behind24proxies](https://www.reddit.com/r/Python/comments/xb25lo/i_created_pixelhub_to_customize_your_github/)
