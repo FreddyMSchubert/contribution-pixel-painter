@@ -4,6 +4,8 @@
 
 > Let's abuse the GitHub contribution graph!
 
+![Contribution Graph Pixel Wave with epic Gradient](https://github.com/FreddyMSchubert/contribution-pixel-painter/blob/main/readme-assets/pixel-wave-gradiented.png)
+
 ## What is this?
 
 If you were going to come up with a way to stress someone out about how much they are contributing, heavily featuring a big graph of all their contributions over time would be a great way to do so!
@@ -56,3 +58,4 @@ Let's get started...
 # Cool Examples
 
 ![Contribution Graph Pixel Wave with epic Gradient](https://github.com/FreddyMSchubert/contribution-pixel-painter/blob/main/readme-assets/pixel-wave-gradiented.png)
+> [FreddyMSchubert](https://github.com/FreddyMSchubert) - 2019
