@@ -93,8 +93,8 @@ filename = 'commit_log.md'
 with open(filename, 'w') as file:
 	file.write("# Git Contribution Art created using https://github.com/FreddyMSchubert/contribution-pixel-painter !\n")
 
-for date in selected_dates:
-	create_commit(date)
+for date, count in selected_dates.items():
+	create_commit(date, count)
 
 # Cleanup
 os.remove(filename)
