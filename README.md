@@ -2,7 +2,7 @@
 
 #### Turn your GitHub contribution graph into a canvas where you can 'paint' commits on specific days.
 
-> Let's abuse the GitHub contribution graph!
+> Let's abuse the GitHub contribution graph! :-D
 
 ![Contribution Graph Pixel Wave with epic Gradient](https://github.com/FreddyMSchubert/contribution-pixel-painter/blob/main/readme-assets/examples/pixel-snake-gradiented.png)
 
